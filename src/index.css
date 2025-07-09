@@ -1,0 +1,166 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .font-script {
+    font-family: 'Dancing Script', cursive;
+  }
+  
+  .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@keyframes celebration-fall {
+  0% {
+    transform: translateY(-100px) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(20vh) translateX(var(--horizontal-movement)) rotate(90deg);
+  }
+  50% {
+    transform: translateY(50vh) translateX(calc(var(--horizontal-movement) * 0.8)) rotate(180deg);
+  }
+  75% {
+    opacity: 0.4;
+    transform: translateY(75vh) translateX(calc(var(--horizontal-movement) * 0.6)) rotate(270deg);
+  }
+  100% {
+    transform: translateY(calc(100vh + 100px)) translateX(calc(var(--horizontal-movement) * 0.4)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-celebration-fall {
+  animation: celebration-fall ease-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+
+/* Animación de flotación suave */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Animación de fade-in */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gradiente radial para el efecto de brillo */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Clases de utilidad para las animaciones */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out;
+}
+
+/* Sombra de texto */
+.text-shadow {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efectos de hover para interactividad */
+.hover-glow:hover {
+  filter: drop-shadow(0 0 30px rgba(139, 69, 19, 0.5));
+  transition: filter 0.3s ease;
+}
+
+/* Animación de partículas flotantes */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Aplicar animación de sparkle a elementos específicos */
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Variaciones de delay para crear efecto escalonado */
+.animate-sparkle-delay-1 {
+  animation: sparkle 2s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.animate-sparkle-delay-2 {
+  animation: sparkle 2s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-sparkle-delay-3 {
+  animation: sparkle 2s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
