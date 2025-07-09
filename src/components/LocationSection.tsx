@@ -4,21 +4,14 @@ import FloralBackground from './FloralBackground';
 
 const LocationSection = () => {
   const locations = [
-    {
-      title: "Ceremonia Religiosa",
-      name: "Iglesia San José", 
-      address: "Av. Principal 123, Centro",
-      time: "7:00 PM",
-      phone: "+52 555 123 4567",
-      mapUrl: "https://goo.gl/maps/example1"
-    },
+  
     {
       title: "Recepción",
-      name: "Jardín Rosa",
-      address: "Calle de los Sueños 456, Zona Rosa",
-      time: "8:30 PM", 
-      phone: "+52 555 987 6543",
-      mapUrl: "https://goo.gl/maps/example2"
+      name: "Las Antorchas",
+      address: "Aldama 6 Col. Centro 43800 Tizayuca, Mexico",
+      time: "15:30 PM", 
+      phone: "",
+      mapUrl: "https://maps.app.goo.gl/GdhK54mzmSGQHNbe8?g_st=aw"
     }
   ];
 
@@ -85,17 +78,7 @@ const LocationSection = () => {
           ))}
         </div>
         
-        <div className="mt-16 bg-white/70 backdrop-blur-sm rounded-3xl p-8 text-center max-w-4xl mx-auto">
-          <h3 className="font-serif text-2xl text-quince-burgundy mb-4">
-            Transporte
-          </h3>
-          <p className="text-gray-700 mb-4">
-            Habrá servicio de transporte gratuito entre la ceremonia y la recepción.
-          </p>
-          <p className="text-sm text-gray-600">
-            El transporte saldrá 15 minutos después de finalizada la ceremonia.
-          </p>
-        </div>
+     
       </div>
     </section>
   );
