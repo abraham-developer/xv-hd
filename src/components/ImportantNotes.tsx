@@ -65,15 +65,7 @@ const ImportantNotes = () => {
           })}
         </div>
 
-        <div className="mt-16 bg-quince-gold/20 backdrop-blur-sm rounded-3xl p-8 text-center max-w-4xl mx-auto">
-          <h3 className="font-script text-3xl text-quince-gold mb-4">
-            ¡Protocolo COVID-19!
-          </h3>
-          <p className="text-quince-blush">
-            Por la seguridad de todos, seguiremos las medidas sanitarias vigentes. 
-            Gel antibacterial disponible en todo el evento.
-          </p>
-        </div>
+     
       </div>
     </section>
   );
