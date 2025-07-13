@@ -42,7 +42,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-
+          
           {/* Thank You Message */}
           <div className="bg-quince-gold/10 rounded-2xl p-8 mb-8 max-w-4xl mx-auto">
             <blockquote className="font-script text-2xl md:text-3xl text-quince-gold mb-4">
@@ -50,7 +50,7 @@ const Footer = () => {
             </blockquote>
             <p className="text-quince-blush">Con amor, Hannah</p>
           </div>
-
+          
           {/* Copyright */}
           <div className="border-t border-quince-gold/20 pt-8">
             <p className="text-quince-blush text-sm">
@@ -59,15 +59,15 @@ const Footer = () => {
             <p className="text-quince-blush/70 text-xs mt-2">
               #HannahXV #MisQuinceAños #Celebración2025
             </p>
-            <p className="text-quince-blush/50 text-xs mt-1">
-              Desarrollado por{' '}
+            <p className="text-quince-blush/70 text-sm mt-4 font-medium tracking-wide">
+              Experiencia exclusiva creada por{' '}
               <a 
-                href="https://abrahamdev.net" 
+                href="https://mis-xv.blog" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hover:text-quince-gold/70 transition-colors duration-300"
+                className="text-quince-gold/80 hover:text-quince-gold transition-all duration-500 border-b border-quince-gold/30 hover:border-quince-gold/60 font-semibold"
               >
-                Abrahamdev.net
+                mis-xv.blog
               </a>
             </p>
           </div>
