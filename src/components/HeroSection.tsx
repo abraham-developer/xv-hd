@@ -185,14 +185,14 @@ const HeroSection = () => {
           </div>
           
           {/* Invitation text con más efectos */}
-          <p className="text-lg md:text-xl text-gray-700 mb-8 font-medium relative">
+          <div className="text-lg md:text-xl text-gray-700 mb-8 font-medium relative">
             Te invito a celebrar conmigo este momento tan especial
             <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-pink-100/20 to-white/20 backdrop-blur-sm rounded-lg -z-10"></div>
             
             {/* Sparkles en el texto de invitación */}
             <div className="absolute -top-2 left-1/4 w-1 h-1 bg-pink-300 rounded-full animate-ping" style={{ animationDelay: '0.8s' }}></div>
             <div className="absolute -bottom-2 right-1/3 w-1 h-1 bg-purple-300 rounded-full animate-ping" style={{ animationDelay: '1.3s' }}></div>
-          </p>
+          </div>
           
           {/* Countdown container con más efectos florales */}
           <div className="inline-block bg-gradient-to-br from-white/95 via-pink-50/90 to-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-quince-gold/30 relative overflow-hidden">
