@@ -17,11 +17,11 @@ const Footer = () => {
               <div className="h-px bg-quince-gold flex-1 max-w-32"></div>
             </div>
             <p className="text-quince-blush text-lg mb-8">
-              Mis XV Años • 15 de Marzo, 2025
+              Mis XV Años • 27 de septiembre, 2025
             </p>
             
             {/* Social Links */}
-            <div className="flex justify-center space-x-6 mb-8">
+            {/* <div className="flex justify-center space-x-6 mb-8">
               <a 
                 href="#" 
                 className="w-12 h-12 bg-quince-gold/20 rounded-full flex items-center justify-center hover:bg-quince-gold/30 transition-colors duration-300"
@@ -40,7 +40,7 @@ const Footer = () => {
               >
                 <Phone className="w-6 h-6" />
               </a>
-            </div>
+            </div> */}
           </div>
           
           {/* Thank You Message */}

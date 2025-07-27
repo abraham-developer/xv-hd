@@ -74,7 +74,7 @@ const RSVPSection = () => {
           </h2>
           <div className="w-24 h-1 bg-quince-gold mx-auto mb-6"></div>
           <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-            Por favor confirma tu asistencia antes del 1 de marzo
+            Confirma tu asistencia por favor. La presentación de esta invitación es requerida para el acceso al evento.
           </p>
         </div>
 
@@ -217,14 +217,14 @@ const RSVPSection = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="mt-12 text-center">
+          {/* <div className="mt-12 text-center">
             <p className="text-gray-700 mb-2">
               ¿Tienes alguna pregunta? Contáctanos:
             </p>
             <p className="text-quince-burgundy font-medium">
               WhatsApp: +52 555 123 4567
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
