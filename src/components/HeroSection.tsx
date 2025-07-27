@@ -186,7 +186,7 @@ const HeroSection = () => {
           
           {/* Invitation text con más efectos */}
           <div className="text-lg md:text-xl text-gray-700 mb-8 font-medium relative">
-            Te invito a celebrar conmigo este momento tan especial
+            Ven a celebrar conmigo
             <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-pink-100/20 to-white/20 backdrop-blur-sm rounded-lg -z-10"></div>
             
             {/* Sparkles en el texto de invitación */}
@@ -201,7 +201,7 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-gradient-to-tl from-purple-200/5 via-rose-200/5 to-amber-200/5"></div>
             
             <p className="text-quince-burgundy font-serif text-xl mb-4 relative z-10">
-              15 de Marzo, 2025
+              27 de septiembre, 2025
             </p>
             <div className="relative z-10">
               <CountdownTimer targetDate="2025-03-15T19:00:00" />
