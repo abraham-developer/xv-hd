@@ -24,6 +24,7 @@ const Navigation = () => {
     { id: 'inicio', label: 'Inicio' },
     { id: 'evento', label: 'El Evento' },
     { id: 'galeria', label: 'Galería' },
+    { id: 'regalos', label: 'Mesa de regalos' },
     { id: 'ubicacion', label: 'Ubicación' },
     { id: 'agenda', label: 'Agenda' },
     { id: 'confirmacion', label: 'Confirmación' }

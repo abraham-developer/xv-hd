@@ -7,6 +7,8 @@ import ImportantNotes from '@/components/ImportantNotes';
 import LocationSection from '@/components/LocationSection';
 import ScheduleSection from '@/components/ScheduleSection';
 import RSVPSection from '@/components/RSVPSection';
+import GiftRegistrySection from '@/components/TableRgls';
+
 import Footer from '@/components/Footer';
 import { Volume2, VolumeX } from 'lucide-react';
 
@@ -122,6 +124,8 @@ const Index = () => {
       <EventSection />
       <ImageCarousel />
       <ImportantNotes />
+      <GiftRegistrySection />
+      
       <LocationSection />
       <ScheduleSection />
       <RSVPSection />
