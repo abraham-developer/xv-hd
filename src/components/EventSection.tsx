@@ -71,8 +71,8 @@ const EventSection = () => {
             "Hannah Deseamos que este dia sea especial y divertido, nunca dejes de soñar en grande porque el mundo necesita tu magia. Agradecemos a Dios por tu vida."
           </blockquote>
 
-          <p className="text-quince-burgundy font-medium">- Dimas Lopez Jose Fidel</p>
-          <p className="text-quince-burgundy font-medium">- Uribe Rodriguez Nayeli</p>
+          <p className="text-quince-burgundy font-medium">- Dimas Lopez Jose Fidel -&- Uribe Rodriguez Nayeli</p>
+         
         </div>
       </div>
     </section>
