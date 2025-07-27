@@ -1,62 +1,62 @@
-
 import React, { useState } from 'react';
 import { Send, Check, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 
 const RSVPSection = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    guests: '1',
-    phone: '',
-    email: '',
-    attendance: '',
-    allergies: '',
-    message: ''
-  });
+  const [folio, setFolio] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!folio.trim()) {
+      toast({
+        title: "Campo requerido",
+        description: "Por favor ingresa tu folio de invitación.",
+        variant: "destructive",
+        duration: 3000,
+      });
+      return;
+    }
+    
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitted(true);
       toast({
-        title: "¡Confirmación recibida!",
-        description: "Gracias por confirmar tu asistencia. ¡Te esperamos!",
+        title: "¡Folio recibido!",
+        description: "Gracias por ingresar tu folio. ¡Te esperamos!",
         duration: 5000,
       });
     }, 1000);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
   if (isSubmitted) {
     return (
-      <section id="confirmacion" className="py-20 bg-gradient-to-b from-white to-quince-cream">
+      <section id="confirmacion" className="py-12 md:py-16 bg-gradient-to-b from-white to-quince-cream">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="bg-white rounded-3xl shadow-2xl p-12">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Check className="w-10 h-10 text-green-600" />
+          <div className="max-w-lg mx-auto text-center">
+            <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Check className="w-8 h-8 text-green-600" />
               </div>
-              <h2 className="font-script text-4xl text-quince-burgundy mb-4">
-                ¡Confirmación Recibida!
+              <h2 className="font-script text-3xl md:text-4xl text-quince-burgundy mb-4">
+                ¡Folio Recibido!
               </h2>
-              <p className="text-lg text-gray-700 mb-6">
-                Gracias por confirmar tu asistencia. ¡Será un honor tenerte en mi celebración!
+              <p className="text-base md:text-lg text-gray-700 mb-6">
+                Gracias por ingresar tu folio. ¡Será un honor tenerte en mi celebración!
               </p>
               <div className="flex justify-center">
-                <Heart className="w-8 h-8 text-quince-rose animate-pulse" />
+                <Heart className="w-6 h-6 text-quince-rose animate-pulse" />
+              </div>
+              
+              {/* Información adicional */}
+              <div className="mt-6 p-4 bg-quince-blush/10 rounded-xl border border-quince-rose/20">
+                <p className="text-sm text-gray-600">
+                  <span className="font-semibold text-quince-burgundy">Folio registrado:</span> {folio}
+                </p>
               </div>
             </div>
           </div>
@@ -66,165 +66,81 @@ const RSVPSection = () => {
   }
 
   return (
-    <section id="confirmacion" className="py-20 bg-gradient-to-b from-white to-quince-cream">
+    <section id="confirmacion" className="py-12 md:py-16 bg-gradient-to-b from-white to-quince-cream">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="font-script text-5xl md:text-6xl text-quince-burgundy mb-4">
+        <div className="text-center mb-8 md:mb-12 animate-fade-in">
+          <h2 className="font-script text-3xl md:text-4xl lg:text-5xl text-quince-burgundy mb-4">
             Confirmación de Asistencia
           </h2>
-          <div className="w-24 h-1 bg-quince-gold mx-auto mb-6"></div>
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-            Confirma tu asistencia por favor. La presentación de esta invitación es requerida para el acceso al evento.
+          <div className="w-20 h-0.5 bg-quince-gold mx-auto mb-4 rounded-full"></div>
+          <p className="text-sm md:text-base text-gray-700 max-w-xl mx-auto">
+            Por favor confirma tu asistencia. Es indispensable presentar esta invitación al ingresar al salón.
           </p>
         </div>
 
-        <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
+        <div className="max-w-lg mx-auto">
+          <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-white/50">
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name */}
+              
+              {/* Folio de Invitación */}
               <div>
-                <label className="block text-quince-burgundy font-medium mb-2">
-                  Nombre Completo *
+                <label className="block text-quince-burgundy font-semibold mb-3 text-lg">
+                  Folio de Invitación *
                 </label>
-                <Input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="w-full border-quince-rose focus:border-quince-burgundy"
-                  required
-                />
-              </div>
-
-              {/* Number of Guests */}
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-quince-burgundy font-medium mb-2">
-                    Número de Invitados *
-                  </label>
-                  <select
-                    name="guests"
-                    value={formData.guests}
-                    onChange={handleInputChange}
-                    className="w-full p-3 border border-quince-rose rounded-lg focus:border-quince-burgundy focus:ring-2 focus:ring-quince-burgundy/20"
-                    required
-                  >
-                    <option value="1">1 persona</option>
-                    <option value="2">2 personas</option>
-                    <option value="3">3 personas</option>
-                    <option value="4">4 personas</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-quince-burgundy font-medium mb-2">
-                    Teléfono *
-                  </label>
+                <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                  Ingresa el número de folio que aparece en la parte inferior de tu invitación recibida.
+                </p>
+                
+                <div className="relative">
                   <Input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full border-quince-rose focus:border-quince-burgundy"
+                    type="text"
+                    value={folio}
+                    onChange={(e) => setFolio(e.target.value)}
+                    placeholder="Ej: INV-2025-001"
+                    className="w-full border-2 border-quince-rose/30 focus:border-quince-burgundy focus:ring-2 focus:ring-quince-burgundy/20 text-lg py-4 text-center font-mono tracking-wider"
                     required
                   />
+                  <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
+                    <div className="w-2 h-2 bg-quince-gold rounded-full animate-pulse"></div>
+                  </div>
                 </div>
-              </div>
-
-              {/* Email */}
-              <div>
-                <label className="block text-quince-burgundy font-medium mb-2">
-                  Correo Electrónico
-                </label>
-                <Input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full border-quince-rose focus:border-quince-burgundy"
-                />
-              </div>
-
-              {/* Attendance */}
-              <div>
-                <label className="block text-quince-burgundy font-medium mb-2">
-                  ¿Confirmas tu asistencia? *
-                </label>
-                <div className="flex space-x-6">
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      name="attendance"
-                      value="si"
-                      onChange={handleInputChange}
-                      className="mr-2 text-quince-burgundy"
-                      required
-                    />
-                    <span>Sí, asistiré</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      name="attendance"
-                      value="no"
-                      onChange={handleInputChange}
-                      className="mr-2 text-quince-burgundy"
-                      required
-                    />
-                    <span>No podré asistir</span>
-                  </label>
+                
+                {/* Ayuda visual */}
+                <div className="mt-4 p-3 bg-quince-gold/5 rounded-lg border border-quince-gold/20">
+                  <p className="text-xs text-gray-600 text-center">
+                    💡 <span className="font-semibold">Tip:</span> El folio se encuentra impreso en la parte inferior de tu invitación física
+                  </p>
                 </div>
-              </div>
-
-              {/* Allergies */}
-              <div>
-                <label className="block text-quince-burgundy font-medium mb-2">
-                  Alergias o Restricciones Alimentarias
-                </label>
-                <Input
-                  type="text"
-                  name="allergies"
-                  value={formData.allergies}
-                  onChange={handleInputChange}
-                  placeholder="Ninguna / Especificar..."
-                  className="w-full border-quince-rose focus:border-quince-burgundy"
-                />
-              </div>
-
-              {/* Message */}
-              <div>
-                <label className="block text-quince-burgundy font-medium mb-2">
-                  Mensaje Especial (Opcional)
-                </label>
-                <Textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  placeholder="Un mensaje de felicitación o buenos deseos..."
-                  className="w-full h-24 border-quince-rose focus:border-quince-burgundy resize-none"
-                />
               </div>
 
               {/* Submit Button */}
               <Button
                 type="submit"
-                className="w-full bg-quince-burgundy hover:bg-quince-burgundy/90 text-white py-4 text-lg font-medium flex items-center justify-center space-x-2 transition-all duration-300"
+                className="w-full bg-gradient-to-r from-quince-burgundy to-quince-burgundy/90 hover:from-quince-burgundy/90 hover:to-quince-burgundy text-white py-4 text-base md:text-lg font-semibold flex items-center justify-center space-x-3 transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
                 <Send className="w-5 h-5" />
-                <span>Enviar Confirmación</span>
+                <span>Confirmar Asistencia</span>
               </Button>
+              
+              {/* Nota informativa */}
+              <div className="text-center">
+                <p className="text-xs text-gray-500">
+                  Al confirmar, recibirás los detalles finales del evento
+                </p>
+              </div>
             </form>
           </div>
 
-          {/* Contact Info */}
-          {/* <div className="mt-12 text-center">
-            <p className="text-gray-700 mb-2">
-              ¿Tienes alguna pregunta? Contáctanos:
+          {/* Información adicional */}
+          <div className="mt-6 text-center bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-white/30">
+            <p className="text-sm text-gray-700 mb-2">
+              <span className="font-semibold text-quince-burgundy">Importante:</span> 
+              {" "}Tu folio es único y cuenta con numero limitado de personas que pueden utilizarlo
             </p>
-            <p className="text-quince-burgundy font-medium">
-              WhatsApp: +52 555 123 4567
+            <p className="text-xs text-gray-600">
+              Si tienes problemas para encontrar tu folio, contáctanos
             </p>
-          </div> */}
+          </div>
         </div>
       </div>
     </section>
