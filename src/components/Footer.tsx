@@ -59,17 +59,35 @@ const Footer = () => {
             <p className="text-quince-blush/70 text-xs mt-2">
               #HannahXV #MisQuinceAños #Celebración2025
             </p>
-            <p className="text-quince-blush/70 text-sm mt-4 font-medium tracking-wide">
-              Experiencia exclusiva creada por{' '}
-              <a 
-                href="https://mis-xv.blog" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-quince-gold/80 hover:text-quince-gold transition-all duration-500 border-b border-quince-gold/30 hover:border-quince-gold/60 font-semibold"
-              >
-                mis-xv.blog
-              </a>
-            </p>
+            
+            {/* Colaboraciones */}
+            <div className="mt-6 space-y-2">
+              <p className="text-quince-blush/70 text-sm font-medium tracking-wide">
+                Experiencia exclusiva creada por{' '}
+                <a 
+                  href="https://mis-xv.blog" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-quince-gold/80 hover:text-quince-gold transition-all duration-500 border-b border-quince-gold/30 hover:border-quince-gold/60 font-semibold"
+                >
+                  mis-xv.blog
+                </a>
+              </p>
+              
+              <div className="flex items-center justify-center space-x-2 text-quince-blush/60 text-xs">
+                <span>En colaboración con</span>
+                <a 
+                  href="https://abrahamdev.net" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-quince-gold/70 hover:text-quince-gold transition-all duration-500 font-semibold"
+                >
+                  abrahamdev.net
+                </a>
+                <span className="text-quince-gold/50">•</span>
+                <span className="text-quince-gold/70 font-mono text-xs">[ACUBIC]</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
