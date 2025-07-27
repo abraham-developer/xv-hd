@@ -85,9 +85,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({
         <TimeUnit value={timeLeft.seconds} label="Segundos" />
       </div>
       
-      <p className="text-sm text-gray-600 mt-4">
-        Evento: {formatDate(new Date(2025, 8, 27, 15, 30, 0))}
-      </p>
+     
     </div>
   );
 };

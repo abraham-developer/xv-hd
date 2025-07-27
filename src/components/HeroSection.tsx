@@ -8,7 +8,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -23,246 +23,167 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-pink-50/30 to-white px-4 py-8">
       {/* Floral Background */}
-      <FloralBackground variant="mixed" intensity="medium" />
+      <FloralBackground variant="mixed" intensity="light" />
       
-      {/* Magical Sparkles - Más intensos */}
+      {/* Sparkles optimizados - reducidos para mejor rendimiento */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Sparkles principales */}
-        <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-quince-gold rounded-full animate-ping" style={{ animationDelay: '0s' }}></div>
-        <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-white rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-1/3 left-1/3 w-2.5 h-2.5 bg-quince-burgundy rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-2/3 right-1/4 w-2 h-2 bg-quince-gold rounded-full animate-ping" style={{ animationDelay: '3s' }}></div>
-        <div className="absolute bottom-1/4 left-1/2 w-3 h-3 bg-white rounded-full animate-ping" style={{ animationDelay: '4s' }}></div>
-        
-        {/* Sparkles adicionales para más magia */}
-        <div className="absolute top-1/6 left-1/6 w-1.5 h-1.5 bg-pink-300 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
-        <div className="absolute top-1/2 right-1/6 w-1 h-1 bg-purple-300 rounded-full animate-ping" style={{ animationDelay: '1.5s' }}></div>
-        <div className="absolute bottom-1/6 left-2/3 w-1.5 h-1.5 bg-rose-300 rounded-full animate-ping" style={{ animationDelay: '2.5s' }}></div>
-        <div className="absolute top-3/4 left-1/5 w-2 h-2 bg-amber-300 rounded-full animate-ping" style={{ animationDelay: '3.5s' }}></div>
-        <div className="absolute bottom-1/2 right-1/3 w-1 h-1 bg-orange-300 rounded-full animate-ping" style={{ animationDelay: '4.5s' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-quince-gold rounded-full animate-ping" style={{ animationDelay: '0s' }}></div>
+        <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-white rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-quince-burgundy rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-2/3 right-1/4 w-1.5 h-1.5 bg-quince-gold rounded-full animate-ping" style={{ animationDelay: '3s' }}></div>
+        <div className="absolute bottom-1/4 left-1/2 w-2 h-2 bg-white rounded-full animate-ping" style={{ animationDelay: '4s' }}></div>
       </div>
       
-      {/* Additional Floating Elements - Más elementos florales */}
+      {/* Elementos flotantes simplificados */}
       <div 
-        className="absolute top-1/4 left-1/4 w-40 h-40 bg-gradient-to-br from-pink-300/30 to-rose-300/30 rounded-full blur-xl"
+        className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-br from-pink-300/20 to-rose-300/20 rounded-full blur-xl opacity-60"
         style={{ 
           animation: 'gentle-float 10s ease-in-out infinite',
-          transform: `translateY(${scrollY * 0.2}px)`,
-          opacity: Math.max(0, 1 - scrollY / 500)
+          transform: `translateY(${scrollY * 0.1}px)`
         }}
       ></div>
       <div 
-        className="absolute bottom-1/4 right-1/4 w-56 h-56 bg-gradient-to-br from-purple-300/20 to-quince-burgundy/20 rounded-full blur-2xl"
+        className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-gradient-to-br from-purple-300/15 to-quince-burgundy/15 rounded-full blur-2xl opacity-50"
         style={{
           animation: 'gentle-float 12s ease-in-out infinite',
           animationDelay: '3s',
-          transform: `translateY(${scrollY * -0.1}px)`,
-          opacity: Math.max(0, 1 - scrollY / 500)
-        }}
-      ></div>
-      <div 
-        className="absolute top-1/3 right-1/5 w-32 h-32 bg-gradient-to-br from-amber-300/25 to-orange-300/25 rounded-full blur-xl"
-        style={{
-          animation: 'gentle-float 14s ease-in-out infinite',
-          animationDelay: '6s',
-          transform: `translateY(${scrollY * 0.25}px)`,
-          opacity: Math.max(0, 1 - scrollY / 500)
+          transform: `translateY(${scrollY * -0.05}px)`
         }}
       ></div>
       
       {/* Main Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center max-w-lg mx-auto">
         <div className="animate-fade-in">
-          {/* Nombre HANNAH con letras individuales */}
+          {/* Nombre HANNAH optimizado */}
           <div 
-            className="relative mb-8"
+            className="relative mb-4 md:mb-6"
             style={{
-              transform: `translateY(${scrollY * 0.5}px)`,
-              opacity: Math.max(0, 1 - scrollY / 300)
+              transform: `translateY(${Math.min(scrollY * 0.3, 50)}px)`,
+              opacity: Math.max(0.3, 1 - scrollY / 400)
             }}
           >
-            {/* Resplandor mágico detrás del nombre */}
+            {/* Resplandor simplificado */}
             <div 
-              className="absolute inset-0 -z-10 bg-gradient-radial from-quince-gold/40 via-pink-300/20 to-transparent blur-3xl scale-150"
+              className="absolute inset-0 -z-10 bg-gradient-radial from-quince-gold/30 via-pink-300/15 to-transparent blur-2xl scale-110"
               style={{
-                animation: 'gentle-pulse 8s ease-in-out infinite',
-                opacity: Math.max(0, 1 - scrollY / 250)
-              }}
-            ></div>
-            <div 
-              className="absolute inset-0 -z-10 bg-gradient-radial from-purple-300/30 via-rose-300/20 to-transparent blur-2xl scale-125" 
-              style={{ 
-                animation: 'gentle-pulse 8s ease-in-out infinite',
-                animationDelay: '2s',
-                opacity: Math.max(0, 1 - scrollY / 250)
+                animation: 'gentle-pulse 6s ease-in-out infinite'
               }}
             ></div>
             
-            {/* Contenedor del nombre */}
-            <div className="flex items-center justify-center space-x-2 md:space-x-4 mb-4">
+            {/* Contenedor del nombre responsivo - MÁS COMPACTO */}
+            <div className="flex items-center justify-center space-x-0.5 sm:space-x-1 md:space-x-2 mb-3">
               {letters.map((letter, index) => (
                 <div
                   key={index}
-                  className="relative transform hover:scale-110 transition-all duration-700"
+                  className="relative transform hover:scale-105 transition-all duration-500"
                   style={{
                     animation: `gentle-float 6s ease-in-out infinite`,
-                    animationDelay: letter.delay,
-                    transform: `translateY(${scrollY * 0.3}px)`,
-                    opacity: Math.max(0, 1 - scrollY / 400)
+                    animationDelay: letter.delay
                   }}
                 >
-                  {/* Resplandor individual para cada letra */}
-                  <div className="absolute inset-0 -z-10 bg-gradient-radial from-quince-gold/50 to-transparent blur-lg scale-125 animate-pulse"></div>
-                  
-                  {/* Letra */}
+                  {/* Letra con tamaños MÁS PEQUEÑOS */}
                   <img 
                     src={letter.src} 
                     alt={letter.alt}
-                    className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 filter drop-shadow-2xl hover:drop-shadow-3xl transition-all duration-700"
+                    className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 filter drop-shadow-lg hover:drop-shadow-xl transition-all duration-500"
                     style={{ 
-                      filter: 'drop-shadow(0 0 15px rgba(139, 69, 19, 0.5)) drop-shadow(0 0 25px rgba(255, 192, 203, 0.3))',
-                      animation: 'gentle-glow 4s ease-in-out infinite'
+                      filter: 'drop-shadow(0 0 10px rgba(139, 69, 19, 0.4)) drop-shadow(0 0 20px rgba(255, 192, 203, 0.2))'
                     }}
                     onLoad={() => setIsLoaded(true)}
+                    loading="eager"
                   />
                   
-                  {/* Sparkles alrededor de cada letra */}
-                  <div className="absolute -top-2 -right-1 w-1.5 h-1.5 bg-pink-300 rounded-full animate-ping" style={{ animationDelay: `${index * 0.3}s` }}></div>
-                  <div className="absolute -bottom-1 -left-1 w-1 h-1 bg-purple-300 rounded-full animate-ping" style={{ animationDelay: `${index * 0.3 + 0.5}s` }}></div>
-                  <div className="absolute top-1/2 -left-2 w-1 h-1 bg-rose-300 rounded-full animate-ping" style={{ animationDelay: `${index * 0.3 + 1}s` }}></div>
+                  {/* Sparkles reducidos alrededor de letras */}
+                  <div className="absolute -top-1 -right-1 w-1 h-1 bg-pink-300 rounded-full animate-ping" style={{ animationDelay: `${index * 0.3}s` }}></div>
                 </div>
               ))}
             </div>
-            
-            {/* Elementos florales decorativos alrededor del nombre */}
-            <div 
-              className="absolute -top-6 left-1/4 w-8 h-8 bg-gradient-to-br from-pink-300/60 to-rose-300/60 rounded-full blur-sm"
-              style={{
-                animation: 'gentle-float 8s ease-in-out infinite',
-                opacity: Math.max(0, 1 - scrollY / 350)
-              }}
-            ></div>
-            <div 
-              className="absolute -bottom-6 right-1/4 w-6 h-6 bg-gradient-to-br from-purple-300/60 to-violet-300/60 rounded-full blur-sm" 
-              style={{ 
-                animation: 'gentle-float 8s ease-in-out infinite',
-                animationDelay: '2s',
-                opacity: Math.max(0, 1 - scrollY / 350)
-              }}
-            ></div>
-            <div 
-              className="absolute top-1/2 -left-8 w-4 h-4 bg-gradient-to-br from-amber-300/60 to-orange-300/60 rounded-full blur-sm" 
-              style={{ 
-                animation: 'gentle-float 8s ease-in-out infinite',
-                animationDelay: '4s',
-                opacity: Math.max(0, 1 - scrollY / 350)
-              }}
-            ></div>
-            <div 
-              className="absolute top-1/2 -right-8 w-5 h-5 bg-gradient-to-br from-rose-300/60 to-pink-300/60 rounded-full blur-sm" 
-              style={{ 
-                animation: 'gentle-float 8s ease-in-out infinite',
-                animationDelay: '1s',
-                opacity: Math.max(0, 1 - scrollY / 350)
-              }}
-            ></div>
           </div>
           
-          {/* Separator con más elementos decorativos */}
-          <div className="flex items-center justify-center space-x-4 mb-8">
-            <div className="h-px bg-gradient-to-r from-transparent via-quince-gold via-pink-300 to-transparent flex-1 max-w-32"></div>
-            <span className="font-serif text-2xl md:text-3xl text-quince-deep font-medium relative">
+          {/* Separator optimizado - MÁS PEQUEÑO */}
+          <div className="flex items-center justify-center space-x-2 md:space-x-3 mb-4 md:mb-5">
+            <div className="h-px bg-gradient-to-r from-transparent via-quince-gold to-transparent flex-1 max-w-16 sm:max-w-20"></div>
+            <span className="font-serif text-lg sm:text-xl md:text-2xl text-quince-deep font-medium relative">
               Mis XV Años
-              {/* Sparkles más intensos alrededor del texto */}
-              <div className="absolute -top-3 -right-3 w-2 h-2 bg-quince-gold rounded-full animate-ping"></div>
-              <div className="absolute -bottom-3 -left-3 w-1.5 h-1.5 bg-pink-300 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
-              <div className="absolute top-0 -left-4 w-1 h-1 bg-purple-300 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
-              <div className="absolute bottom-0 -right-4 w-1 h-1 bg-rose-300 rounded-full animate-ping" style={{ animationDelay: '1.5s' }}></div>
+              <div className="absolute -top-2 -right-2 w-1.5 h-1.5 bg-quince-gold rounded-full animate-ping"></div>
             </span>
-            <div className="h-px bg-gradient-to-r from-transparent via-pink-300 via-quince-gold to-transparent flex-1 max-w-32"></div>
+            <div className="h-px bg-gradient-to-r from-transparent via-quince-gold to-transparent flex-1 max-w-16 sm:max-w-20"></div>
           </div>
           
-          {/* Invitation text con más efectos */}
-          <div className="text-lg md:text-xl text-gray-700 mb-8 font-medium relative">
+          {/* Texto de invitación simplificado - MÁS PEQUEÑO */}
+          <div className="text-sm sm:text-base md:text-lg text-gray-700 mb-4 md:mb-5 font-medium relative max-w-xs sm:max-w-sm mx-auto">
             Ven a celebrar conmigo
-            <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-pink-100/20 to-white/20 backdrop-blur-sm rounded-lg -z-10"></div>
-            
-            {/* Sparkles en el texto de invitación */}
-            <div className="absolute -top-2 left-1/4 w-1 h-1 bg-pink-300 rounded-full animate-ping" style={{ animationDelay: '0.8s' }}></div>
-            <div className="absolute -bottom-2 right-1/3 w-1 h-1 bg-purple-300 rounded-full animate-ping" style={{ animationDelay: '1.3s' }}></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-pink-100/10 to-white/10 backdrop-blur-sm rounded-lg -z-10"></div>
           </div>
           
-          {/* Countdown container con más efectos florales */}
-          <div className="inline-block bg-gradient-to-br from-white/95 via-pink-50/90 to-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-quince-gold/30 relative overflow-hidden">
-            {/* Background pattern mejorado */}
-            <div className="absolute inset-0 bg-gradient-to-br from-quince-gold/10 via-pink-200/10 to-quince-burgundy/10"></div>
-            <div className="absolute inset-0 bg-gradient-to-tl from-purple-200/5 via-rose-200/5 to-amber-200/5"></div>
+          {/* Countdown container MÁS COMPACTO */}
+          <div className="inline-block bg-gradient-to-br from-white/90 via-pink-50/80 to-white/90 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 shadow-xl border border-quince-gold/20 relative overflow-hidden max-w-xs sm:max-w-sm mx-auto">
+            {/* Background simplificado */}
+            <div className="absolute inset-0 bg-gradient-to-br from-quince-gold/5 via-pink-200/5 to-quince-burgundy/5"></div>
             
-            <p className="text-quince-burgundy font-serif text-xl mb-4 relative z-10">
+            <p className="text-quince-burgundy font-serif text-base md:text-lg mb-2 md:mb-3 relative z-10">
               27 de septiembre, 2025
             </p>
-            <div className="relative z-10">
-              <CountdownTimer targetDate="2025-03-15T19:00:00" />
+            <div className="relative z-10 mb-2">
+              <CountdownTimer targetDate="2025-09-27T15:30:00" />
             </div>
             
-            {/* Decorative corner elements mejorados */}
-            <div className="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-quince-gold/40 rounded-tl-lg"></div>
-            <div className="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-pink-300/40 rounded-tr-lg"></div>
-            <div className="absolute bottom-2 left-2 w-8 h-8 border-b-2 border-l-2 border-purple-300/40 rounded-bl-lg"></div>
-            <div className="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-rose-300/40 rounded-br-lg"></div>
+            {/* Información del evento - MÁS PEQUEÑA */}
             
-            {/* Sparkles en las esquinas */}
-            <div className="absolute top-1 right-1 w-1 h-1 bg-quince-gold rounded-full animate-ping"></div>
-            <div className="absolute bottom-1 left-1 w-1 h-1 bg-pink-300 rounded-full animate-ping" style={{ animationDelay: '0.7s' }}></div>
+            
+            {/* Elementos decorativos de esquina MÁS PEQUEÑOS */}
+            <div className="absolute top-1 left-1 w-4 h-4 border-t-2 border-l-2 border-quince-gold/30 rounded-tl-lg"></div>
+            <div className="absolute top-1 right-1 w-4 h-4 border-t-2 border-r-2 border-pink-300/30 rounded-tr-lg"></div>
+            <div className="absolute bottom-1 left-1 w-4 h-4 border-b-2 border-l-2 border-quince-gold/30 rounded-bl-lg"></div>
+            <div className="absolute bottom-1 right-1 w-4 h-4 border-b-2 border-r-2 border-pink-300/30 rounded-br-lg"></div>
           </div>
         </div>
       </div>
       
-      {/* Scroll Indicator con más efectos */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-quince-burgundy rounded-full flex justify-center relative">
-          <div className="w-1 h-3 bg-gradient-to-b from-quince-burgundy to-pink-400 rounded-full mt-2 animate-pulse"></div>
-          {/* Sparkles en el scroll indicator */}
-          <div className="absolute -top-2 -right-2 w-1.5 h-1.5 bg-quince-gold rounded-full animate-ping"></div>
-          <div className="absolute -bottom-1 -left-1 w-1 h-1 bg-pink-300 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+      {/* Scroll Indicator MÁS PEQUEÑO */}
+      <div className="absolute bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-4 h-6 md:w-5 md:h-8 border-2 border-quince-burgundy rounded-full flex justify-center relative">
+          <div className="w-1 h-2 bg-gradient-to-b from-quince-burgundy to-pink-400 rounded-full mt-1 animate-pulse"></div>
         </div>
       </div>
-      
 
-      {/* CSS personalizado para animaciones suaves */}
+      {/* CSS optimizado para animaciones suaves */}
       <style>{`
         @keyframes gentle-float {
           0%, 100% { 
-            transform: translateY(0px) rotate(0deg);
-          }
-          33% { 
-            transform: translateY(-8px) rotate(1deg);
-          }
-          66% { 
-            transform: translateY(-4px) rotate(-0.5deg);
-          }
-        }
-        
-        @keyframes gentle-glow {
-          0%, 100% { 
-            filter: drop-shadow(0 0 15px rgba(139, 69, 19, 0.5)) drop-shadow(0 0 25px rgba(255, 192, 203, 0.3));
+            transform: translateY(0px);
           }
           50% { 
-            filter: drop-shadow(0 0 20px rgba(139, 69, 19, 0.7)) drop-shadow(0 0 35px rgba(255, 192, 203, 0.5)) drop-shadow(0 0 10px rgba(147, 51, 234, 0.3));
+            transform: translateY(-6px);
           }
         }
         
         @keyframes gentle-pulse {
           0%, 100% { 
             transform: scale(1);
-            opacity: 0.6;
+            opacity: 0.5;
           }
           50% { 
-            transform: scale(1.05);
-            opacity: 0.8;
+            transform: scale(1.03);
+            opacity: 0.7;
           }
+        }
+        
+        @keyframes fade-in {
+          from { 
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to { 
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 1s ease-out;
         }
       `}</style>
     </section>
