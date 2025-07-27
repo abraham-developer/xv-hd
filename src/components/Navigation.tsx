@@ -22,7 +22,7 @@ const Navigation = () => {
 
   const menuItems = [
     { id: 'inicio', label: 'Inicio' },
-    { id: 'evento', label: 'El Evento' },
+    { id: 'evento', label: 'Mensaje de padres' },
     { id: 'galeria', label: 'Galería' },
     { id: 'regalos', label: 'Mesa de regalos' },
     { id: 'ubicacion', label: 'Ubicación' },
