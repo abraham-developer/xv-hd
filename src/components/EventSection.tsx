@@ -9,7 +9,7 @@ const EventSection = () => {
       <FloralBackground variant="roses" intensity="light" />
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 animate-fade-in">
+        {/* <div className="text-center mb-16 animate-fade-in">
           <h2 className="font-script text-5xl md:text-6xl text-quince-burgundy mb-4">
             Una Noche Mágica
           </h2>
@@ -17,9 +17,9 @@ const EventSection = () => {
           <p className="text-lg text-gray-700 max-w-2xl mx-auto">
             Acompáñame en esta celebración única e inolvidable donde los sueños se hacen realidad
           </p>
-        </div>
+        </div> */}
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {/* <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 text-center transform hover:scale-105 transition-transform duration-300">
             <div className="w-16 h-16 bg-quince-rose rounded-full flex items-center justify-center mx-auto mb-6">
               <Calendar className="w-8 h-8 text-quince-burgundy" />
@@ -61,13 +61,18 @@ const EventSection = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="mt-16 text-center bg-white/70 backdrop-blur-sm rounded-3xl p-8 max-w-4xl mx-auto">
+        <h2 className="font-script text-5xl md:text-6xl text-quince-burgundy mb-4">
+            Mensaje de padres
+          </h2>
           <blockquote className="font-script text-2xl md:text-3xl text-quince-deep mb-4">
-            "En cada momento especial de nuestras vidas, los sueños se vuelven realidad cuando los compartimos con quienes más amamos"
+            "Hannah Deseamos que este dia sea especial y divertido, nunca dejes de soñar en grande porque el mundo necesita tu magia. Agradecemos a Dios por tu vida."
           </blockquote>
-          <p className="text-quince-burgundy font-medium">- Hannah Dimas</p>
+
+          <p className="text-quince-burgundy font-medium">- Dimas Lopez Jose Fidel</p>
+          <p className="text-quince-burgundy font-medium">- Uribe Rodriguez Nayeli</p>
         </div>
       </div>
     </section>
