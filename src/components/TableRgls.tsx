@@ -48,15 +48,21 @@ const GiftRegistrySection = () => {
       <FloralBackground variant="mixed" intensity="light" />
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-8 md:mb-12 animate-fade-in">
-          <h2 className="font-script text-3xl md:text-4xl lg:text-5xl text-quince-burgundy mb-4 drop-shadow-lg">
-            Mesa de Regalos
-          </h2>
-          <div className="w-20 h-0.5 bg-gradient-to-r from-quince-gold via-quince-rose to-quince-gold mx-auto mb-4 rounded-full"></div>
-          <p className="text-sm md:text-base text-gray-700 max-w-2xl mx-auto font-medium">
-            ¿No sabes qué regalar? Aquí tienes algunas opciones que me harían muy feliz
-          </p>
-        </div>
+        
+         <div className="mt-8 md:mt-12 text-center">
+            <div className="inline-block bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-4 md:px-8 md:py-6 border border-white/50 shadow-lg">
+              <p className="text-gray-700 text-sm md:text-base mb-2">
+                <span className="font-bold text-quince-burgundy">💝 Recuerda:</span> 
+                {" "}Tu presencia es el regalo más importante
+              </p>
+              <p className="text-xs md:text-sm text-gray-600">
+                Pero si deseas obsequiarme algo, estas opciones me harían muy feliz ✨
+              </p>
+            </div>
+          </div> <br />
+
+
+       
 
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
@@ -156,17 +162,7 @@ const GiftRegistrySection = () => {
           </div>
 
           {/* Nota adicional */}
-          <div className="mt-8 md:mt-12 text-center">
-            <div className="inline-block bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-4 md:px-8 md:py-6 border border-white/50 shadow-lg">
-              <p className="text-gray-700 text-sm md:text-base mb-2">
-                <span className="font-bold text-quince-burgundy">💝 Recuerda:</span> 
-                {" "}Tu presencia es el regalo más importante
-              </p>
-              <p className="text-xs md:text-sm text-gray-600">
-                Pero si deseas obsequiarme algo, estas opciones me harían muy feliz ✨
-              </p>
-            </div>
-          </div>
+          
         </div>
       </div>
     </section>
