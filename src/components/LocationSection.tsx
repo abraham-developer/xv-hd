@@ -23,11 +23,11 @@ const LocationSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-4 md:mb-6 animate-fade-in">
           <h2 className="font-script text-3xl md:text-4xl text-quince-burgundy mb-2 drop-shadow-lg">
-            Ubicaciones
+            Ubicación
           </h2>
           <div className="w-16 h-0.5 bg-gradient-to-r from-quince-gold via-quince-rose to-quince-gold mx-auto mb-2 rounded-full"></div>
           <p className="text-sm md:text-base text-gray-700 max-w-xl mx-auto">
-            Encuentra fácilmente los lugares donde celebraremos juntos
+            Encuentra fácilmente le lugar donde celebraremos juntos
           </p>
         </div>
 

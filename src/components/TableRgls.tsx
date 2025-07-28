@@ -20,7 +20,7 @@ const GiftRegistrySection = () => {
       icon: CreditCard,
       title: "Regalo en Efectivo",
       subtitle: "¡Tu regalo en efectivo me hará muy feliz!",
-      description: "Depósitalo con amor a:",
+      description: "Depositalo con amor a:",
       details: [
         { label: "Banco", value: "Santander" },
         { label: "CLABE", value: "014180140178250299", copyable: true }

@@ -74,15 +74,7 @@ const ImportantNotes = () => {
           })}
         </div>
         
-        {/* Nota adicional más compacta */}
-        <div className="text-center mt-4 md:mt-6">
-          <div className="inline-block bg-white/10 backdrop-blur-sm rounded-xl px-4 py-2 md:px-6 md:py-3 border border-white/20">
-            <p className="text-quince-blush text-xs md:text-sm">
-              <span className="text-quince-gold font-semibold">✨ Recuerda:</span> 
-              {" "}Tu presencia es el mejor regalo, pero si quieres contribuir, ¡cualquier detalle será muy apreciado!
-            </p>
-          </div>
-        </div>
+       
       </div>
     </section>
   );
