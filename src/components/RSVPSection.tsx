@@ -358,7 +358,7 @@ const RSVPSection = () => {
                 {/* Ayuda visual */}
                 <div className="mt-4 p-3 bg-quince-gold/5 rounded-lg border border-quince-gold/20">
                   <p className="text-xs text-gray-600 text-center">
-                    💡 <span className="font-semibold">Tip:</span> El folio se encuentra impreso en la parte inferior de tu invitación física
+                    💡 <span className="font-semibold">Tip:</span> El folio se encuentra en el PDF adjuntado a tu invitación
                   </p>
                 </div>
               </div>
