@@ -27,7 +27,7 @@ const LocationSection = () => {
           </h2>
           <div className="w-16 h-0.5 bg-gradient-to-r from-quince-gold via-quince-rose to-quince-gold mx-auto mb-2 rounded-full"></div>
           <p className="text-sm md:text-base text-gray-700 max-w-xl mx-auto">
-            Encuentra fácilmente le lugar donde celebraremos juntos
+            Encuentra fácilmente el lugar donde celebraremos juntos
           </p>
         </div>
 
