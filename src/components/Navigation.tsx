@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
@@ -42,42 +41,39 @@ const Navigation = () => {
             Hannah XV
           </div>
           
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-gray-700 hover:text-quince-burgundy transition-colors duration-300 font-medium"
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-          
-          {/* Mobile Menu Button */}
+          {/* Menu Button - Visible en todos los dispositivos */}
           <button
-            className="md:hidden"
+            className="z-10 relative"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? 
+              <X size={24} className="text-gray-700" /> : 
+              <Menu size={24} className="text-gray-700" />
+            }
           </button>
         </div>
         
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 py-4 bg-white/95 backdrop-blur-md rounded-lg shadow-lg">
-            {menuItems.map((item) => (
+        {/* Menu Dropdown - Desplegable en todos los dispositivos */}
+        <div className={`transition-all duration-300 ease-in-out overflow-hidden ${
+          isMobileMenuOpen 
+            ? 'max-h-96 opacity-100 mt-4' 
+            : 'max-h-0 opacity-0 mt-0'
+        }`}>
+          <div className="py-4 bg-white/95 backdrop-blur-md rounded-lg shadow-lg">
+            {menuItems.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left px-4 py-2 text-gray-700 hover:text-quince-burgundy hover:bg-quince-blush/20 transition-colors duration-300"
+                className="block w-full text-left px-4 py-3 text-gray-700 hover:text-quince-burgundy hover:bg-quince-blush/20 transition-all duration-300"
+                style={{
+                  animationDelay: `${index * 50}ms`
+                }}
               >
                 {item.label}
               </button>
             ))}
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );
