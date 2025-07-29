@@ -117,12 +117,14 @@ const RSVPSection = () => {
   };
 
   const handleConfirmarInvitados = async () => {
-    // Validar que todos los nombres estén llenos
-    const nombresVacios = invitados.some(inv => !inv.nombre.trim());
-    if (nombresVacios) {
+    // Filtrar solo los invitados que tienen nombre (no vacíos)
+    const invitadosConNombre = invitados.filter(inv => inv.nombre.trim() !== '');
+    
+    // Validar que al menos haya un invitado confirmado
+    if (invitadosConNombre.length === 0) {
       toast({
-        title: "Campos incompletos",
-        description: "Por favor completa todos los nombres de los invitados.",
+        title: "Sin invitados",
+        description: "Debes confirmar al menos un invitado.",
         variant: "destructive",
         duration: 3000,
         className: "bg-orange-600 text-white border-orange-700 shadow-xl",
@@ -133,8 +135,8 @@ const RSVPSection = () => {
     setIsSubmittingInvitados(true);
 
     try {
-      // Crear array con folio y nombres
-      const confirmacionData = invitados.map(inv => ({
+      // Crear array solo con los invitados que tienen nombre
+      const confirmacionData = invitadosConNombre.map(inv => ({
         Folio: folio,
         nombre: inv.nombre.trim()
       }));
@@ -145,7 +147,7 @@ const RSVPSection = () => {
       
       toast({
         title: "¡Confirmación exitosa!",
-        description: "Todos los invitados han sido confirmados correctamente.",
+        description: `${invitadosConNombre.length} invitado(s) confirmado(s) correctamente.`,
         duration: 5000,
         className: "bg-green-600 text-white border-green-700 shadow-xl",
       });
@@ -178,6 +180,9 @@ const RSVPSection = () => {
 
   // Pantalla de confirmación final
   if (step === 'confirmado') {
+    // Filtrar solo los invitados confirmados para mostrar
+    const invitadosConfirmados = invitados.filter(inv => inv.nombre.trim() !== '');
+    
     return (
       <section id="confirmacion" className="py-12 md:py-16 bg-gradient-to-b from-white to-quince-cream">
         <div className="container mx-auto px-4">
@@ -190,7 +195,10 @@ const RSVPSection = () => {
                 ¡Confirmación Exitosa!
               </h2>
               <p className="text-base md:text-lg text-gray-700 mb-6">
-                Todos los invitados han sido confirmados. ¡Será un honor tenerlos en mi celebración!
+                {invitadosConfirmados.length === 1 
+                  ? 'El invitado ha sido confirmado.'
+                  : 'Los invitados han sido confirmados.'
+                } ¡Será un honor tenerlos en mi celebración!
               </p>
               <div className="flex justify-center mb-6">
                 <Heart className="w-6 h-6 text-quince-rose animate-pulse" />
@@ -202,15 +210,17 @@ const RSVPSection = () => {
                   <span className="font-semibold text-quince-burgundy">Folio:</span> {folio}
                 </p>
                 <p className="text-sm text-gray-600">
-                  <span className="font-semibold text-quince-burgundy">Personas confirmadas:</span> {invitados.length}
+                  <span className="font-semibold text-quince-burgundy">Personas confirmadas:</span> {invitadosConfirmados.length}
                 </p>
               </div>
 
               {/* Lista de invitados confirmados */}
               <div className="text-left">
-                <h3 className="font-semibold text-quince-burgundy mb-3 text-center">Invitados Confirmados:</h3>
+                <h3 className="font-semibold text-quince-burgundy mb-3 text-center">
+                  {invitadosConfirmados.length === 1 ? 'Invitado Confirmado:' : 'Invitados Confirmados:'}
+                </h3>
                 <div className="space-y-2">
-                  {invitados.map((inv, index) => (
+                  {invitadosConfirmados.map((inv, index) => (
                     <div key={index} className="flex items-center p-2 bg-green-50 rounded-lg">
                       <User className="w-4 h-4 text-green-600 mr-2" />
                       <span className="text-sm text-gray-700">{inv.nombre}</span>
@@ -237,7 +247,10 @@ const RSVPSection = () => {
             <div className="w-20 h-0.5 bg-quince-gold mx-auto mb-4 rounded-full"></div>
             <p className="text-sm md:text-base text-gray-700 max-w-xl mx-auto">
               Tu folio es válido para <span className="font-bold text-quince-burgundy">{folioData.numero_boletos}</span> persona(s). 
-              Por favor ingresa el nombre completo de cada invitado.
+              Por favor ingresa el nombre completo de cada invitado que asistirá.
+            </p>
+            <p className="text-xs text-gray-600 mt-2 max-w-xl mx-auto">
+              <span className="font-semibold">Nota:</span> Puedes dejar campos vacíos si no todos los invitados asistirán.
             </p>
           </div>
 
@@ -257,18 +270,24 @@ const RSVPSection = () => {
                   <div key={index}>
                     <label className="block text-quince-burgundy font-semibold mb-2">
                       <User className="w-4 h-4 inline mr-2" />
-                      Invitado {index + 1} *
+                      Invitado {index + 1} (opcional)
                     </label>
                     <Input
                       type="text"
                       value={invitado.nombre}
                       onChange={(e) => handleInvitadoChange(index, e.target.value)}
-                      placeholder="Nombre completo"
+                      placeholder="Nombre completo (deja vacío si no asiste)"
                       className="w-full border-2 border-quince-rose/30 focus:border-quince-burgundy focus:ring-2 focus:ring-quince-burgundy/20 text-base py-3"
-                      required
                     />
                   </div>
                 ))}
+              </div>
+
+              {/* Información sobre campos completados */}
+              <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                <p className="text-sm text-blue-800 text-center">
+                  {invitados.filter(inv => inv.nombre.trim() !== '').length} de {invitados.length} invitados con nombre ingresado
+                </p>
               </div>
 
               {/* Botón de confirmación */}
