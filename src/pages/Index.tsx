@@ -110,9 +110,10 @@ const Index = () => {
           {/* Iconos CORREGIDOS */}
           <div className="relative z-10">
             {isPlaying ? (
-              <VolumeX className="w-6 h-6" />
-            ) : (
+              
               <Volume2 className="w-6 h-6" />
+            ) : (
+              <VolumeX className="w-6 h-6" />
             )}
           </div>
         </button>
