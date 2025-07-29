@@ -24,10 +24,12 @@ interface Invitado {
 const RSVPSection = () => {
   const [folio, setFolio] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [step, setStep] = useState<'folio' | 'invitados' | 'confirmado'>('folio');
+  const [step, setStep] = useState<'folio' | 'asistencia' | 'invitados' | 'confirmado' | 'no_asiste'>('folio');
   const [folioData, setFolioData] = useState<FolioResponse | null>(null);
   const [invitados, setInvitados] = useState<Invitado[]>([]);
   const [isSubmittingInvitados, setIsSubmittingInvitados] = useState(false);
+  const [motivoNoAsistencia, setMotivoNoAsistencia] = useState('');
+  const [isSubmittingNoAsistencia, setIsSubmittingNoAsistencia] = useState(false);
   const { toast } = useToast();
 
   const handleFolioSubmit = async (e: React.FormEvent) => {
@@ -73,11 +75,11 @@ const RSVPSection = () => {
         const initialInvitados = Array.from({ length: data.numero_boletos }, () => ({ nombre: '' }));
         setInvitados(initialInvitados);
         
-        setStep('invitados');
+        setStep('asistencia');
         
         toast({
           title: "¡Folio encontrado!",
-          description: `Folio válido para ${data.numero_boletos} persona(s). Ingresa los nombres.`,
+          description: `Folio válido para ${data.numero_boletos} persona(s). ¿Asistirás al evento?`,
           duration: 5000,
           className: "bg-green-600 text-white border-green-700 shadow-xl",
         });
@@ -178,6 +180,98 @@ const RSVPSection = () => {
     }
   };
 
+  const handleNoAsistencia = async () => {
+    setIsSubmittingNoAsistencia(true);
+
+    try {
+      const noAsistenciaData = {
+        Folio: folio,
+        no_asiste: true,
+        motivo: motivoNoAsistencia.trim() || null
+      };
+
+      const response = await axios.post('https://aan8nwebhook.abrahamdev.net/webhook/931cca98-ab87-4d76-b6e9-31e6081bacf7', noAsistenciaData);
+
+      setStep('no_asiste');
+      
+      toast({
+        title: "Respuesta registrada",
+        description: "Hemos registrado que no podrás asistir. ¡Gracias por informarnos!",
+        duration: 5000,
+        className: "bg-blue-600 text-white border-blue-700 shadow-xl",
+      });
+
+    } catch (error: any) {
+      console.error('Error al registrar no asistencia:', error);
+      
+      let errorMessage = "No se pudo registrar la respuesta. Intenta de nuevo.";
+      
+      if (error.response) {
+        errorMessage = `Error ${error.response.status}: ${error.response.statusText}`;
+        if (error.response.status === 404) {
+          errorMessage = "Endpoint no encontrado. Verifica la URL del webhook.";
+        }
+      } else if (error.request) {
+        errorMessage = "Sin respuesta del servidor. Verifica la conexión.";
+      }
+      
+      toast({
+        title: "Error al registrar",
+        description: errorMessage,
+        variant: "destructive",
+        duration: 5000,
+        className: "bg-red-600 text-white border-red-700 shadow-xl",
+      });
+    } finally {
+      setIsSubmittingNoAsistencia(false);
+    }
+  };
+
+  // Pantalla de no asistencia confirmada
+  if (step === 'no_asiste') {
+    return (
+      <section id="confirmacion" className="py-12 md:py-16 bg-gradient-to-b from-white to-quince-cream">
+        <div className="container mx-auto px-4">
+          <div className="max-w-lg mx-auto text-center">
+            <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <AlertCircle className="w-8 h-8 text-blue-600" />
+              </div>
+              <h2 className="font-script text-3xl md:text-4xl text-quince-burgundy mb-4">
+                Respuesta Registrada
+              </h2>
+              <p className="text-base md:text-lg text-gray-700 mb-6">
+                Hemos registrado que no podrás asistir al evento. ¡Gracias por informarnos!
+              </p>
+              <div className="flex justify-center mb-6">
+                <Heart className="w-6 h-6 text-quince-rose animate-pulse" />
+              </div>
+              
+              {/* Información del folio */}
+              <div className="mb-4 p-4 bg-quince-blush/10 rounded-xl border border-quince-rose/20">
+                <p className="text-sm text-gray-600 mb-2">
+                  <span className="font-semibold text-quince-burgundy">Folio:</span> {folio}
+                </p>
+                <p className="text-sm text-gray-600">
+                  <span className="font-semibold text-quince-burgundy">Estado:</span> No asistirá
+                </p>
+                {motivoNoAsistencia && (
+                  <p className="text-sm text-gray-600 mt-2">
+                    <span className="font-semibold text-quince-burgundy">Motivo:</span> {motivoNoAsistencia}
+                  </p>
+                )}
+              </div>
+
+              <p className="text-sm text-gray-600">
+                Esperamos poder celebrar contigo en una próxima ocasión.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   // Pantalla de confirmación final
   if (step === 'confirmado') {
     // Filtrar solo los invitados confirmados para mostrar
@@ -228,6 +322,95 @@ const RSVPSection = () => {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Pantalla para confirmar asistencia
+  if (step === 'asistencia' && folioData) {
+    return (
+      <section id="confirmacion" className="py-12 md:py-16 bg-gradient-to-b from-white to-quince-cream">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8 md:mb-12 animate-fade-in">
+            <h2 className="font-script text-3xl md:text-4xl lg:text-5xl text-quince-burgundy mb-4">
+              ¿Asistirás al Evento?
+            </h2>
+            <div className="w-20 h-0.5 bg-quince-gold mx-auto mb-4 rounded-full"></div>
+            <p className="text-sm md:text-base text-gray-700 max-w-xl mx-auto">
+              Tu folio es válido para <span className="font-bold text-quince-burgundy">{folioData.numero_boletos}</span> persona(s). 
+              Por favor confirma si podrás asistir a la celebración.
+            </p>
+          </div>
+
+          <div className="max-w-lg mx-auto">
+            <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-white/50">
+              
+              {/* Información del folio */}
+              <div className="mb-6 p-4 bg-quince-blush/10 rounded-xl border border-quince-rose/20">
+                <p className="text-sm text-gray-600 text-center">
+                  <span className="font-semibold text-quince-burgundy">Folio:</span> {folioData.folio}
+                </p>
+              </div>
+
+              {/* Botones de decisión */}
+              <div className="space-y-4 mb-6">
+                <Button
+                  onClick={() => setStep('invitados')}
+                  className="w-full bg-gradient-to-r from-quince-burgundy to-quince-burgundy/90 hover:from-quince-burgundy/90 hover:to-quince-burgundy text-white py-4 text-base md:text-lg font-semibold flex items-center justify-center space-x-3 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                >
+                  <Check className="w-5 h-5" />
+                  <span>Sí, asistiré</span>
+                </Button>
+
+                <div className="space-y-3">
+                  <label className="block text-quince-burgundy font-semibold text-sm">
+                    Motivo (opcional):
+                  </label>
+                  <Input
+                    type="text"
+                    value={motivoNoAsistencia}
+                    onChange={(e) => setMotivoNoAsistencia(e.target.value)}
+                    placeholder="Ej: Tengo otro compromiso, estaré fuera de la ciudad..."
+                    className="w-full border-2 border-quince-rose/30 focus:border-quince-burgundy focus:ring-2 focus:ring-quince-burgundy/20 text-sm py-3"
+                  />
+                  
+                  <Button
+                    onClick={handleNoAsistencia}
+                    disabled={isSubmittingNoAsistencia}
+                    variant="outline"
+                    className="w-full border-2 border-gray-400 text-gray-700 hover:bg-gray-100 py-4 text-base md:text-lg font-semibold flex items-center justify-center space-x-3 transition-all duration-300"
+                  >
+                    {isSubmittingNoAsistencia ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        <span>Registrando...</span>
+                      </>
+                    ) : (
+                      <>
+                        <AlertCircle className="w-5 h-5" />
+                        <span>No podré asistir</span>
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </div>
+
+              {/* Botón para regresar */}
+              <Button
+                onClick={() => {
+                  setStep('folio');
+                  setFolioData(null);
+                  setInvitados([]);
+                  setMotivoNoAsistencia('');
+                }}
+                variant="ghost"
+                className="w-full text-quince-burgundy hover:bg-quince-burgundy/10"
+              >
+                Cambiar Folio
+              </Button>
             </div>
           </div>
         </div>
@@ -312,14 +495,12 @@ const RSVPSection = () => {
               {/* Botón para regresar */}
               <Button
                 onClick={() => {
-                  setStep('folio');
-                  setFolioData(null);
-                  setInvitados([]);
+                  setStep('asistencia');
                 }}
                 variant="outline"
                 className="w-full mt-3 border-quince-burgundy text-quince-burgundy hover:bg-quince-burgundy hover:text-white"
               >
-                Cambiar Folio
+                Regresar
               </Button>
             </div>
           </div>
