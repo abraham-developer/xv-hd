@@ -128,15 +128,26 @@ const LavenderCurtain: React.FC<LavenderCurtainProps> = ({ onOpen }) => {
             zIndex: 10
           }}
         >
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white mb-4 md:mb-6 drop-shadow-2xl">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white mb-4 md:mb-6" 
+              style={{
+                textShadow: '2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0px 2px 0px #000, 2px 0px 0px #000, 0px -2px 0px #000, -2px 0px 0px #000, 4px 4px 8px rgba(0,0,0,0.8)'
+              }}>
             Hannah
           </h1>
           <div className="flex items-center justify-center space-x-3 md:space-x-6 mb-4 md:mb-6">
             <div className="h-px bg-gradient-to-r from-transparent via-purple-300 to-transparent w-12 md:w-24"></div>
-            <span className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl text-purple-200">XV Años</span>
+            <span className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl text-purple-200"
+                  style={{
+                    textShadow: '1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000, 2px 2px 4px rgba(0,0,0,0.8)'
+                  }}>
+              XV Años
+            </span>
             <div className="h-px bg-gradient-to-r from-transparent via-purple-300 to-transparent w-12 md:w-24"></div>
           </div>
-          <p className="text-purple-300 text-lg md:text-xl lg:text-2xl drop-shadow-lg px-4">
+          <p className="text-purple-300 text-lg md:text-xl lg:text-2xl px-4"
+             style={{
+               textShadow: '1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000, 2px 2px 4px rgba(0,0,0,0.6)'
+             }}>
             Una celebración mágica te espera
           </p>
         </div>
@@ -159,7 +170,12 @@ const LavenderCurtain: React.FC<LavenderCurtainProps> = ({ onOpen }) => {
               <div className="w-10 h-16 border-3 border-white rounded-full mx-auto flex justify-center bg-purple-900/30 backdrop-blur-sm">
                 <div className="w-2 h-4 bg-white rounded-full mt-3 animate-pulse"></div>
               </div>
-              <p className="text-white text-sm mt-2 font-medium">Desliza hacia arriba</p>
+              <p className="text-white text-sm mt-2 font-medium"
+                 style={{
+                   textShadow: '1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000'
+                 }}>
+                Desliza hacia arriba
+              </p>
             </div>
           </div>
         </div>
@@ -176,7 +192,10 @@ const LavenderCurtain: React.FC<LavenderCurtainProps> = ({ onOpen }) => {
                 style={{ width: `${progress * 100}%` }}
               />
             </div>
-            <p className="text-white text-sm text-center mt-2 font-medium drop-shadow-lg">
+            <p className="text-white text-sm text-center mt-2 font-medium"
+               style={{
+                 textShadow: '1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000'
+               }}>
               {Math.round(progress * 100)}% desentreleazada
             </p>
           </div>
