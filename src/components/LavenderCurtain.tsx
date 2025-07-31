@@ -65,20 +65,21 @@ const LavenderCurtain: React.FC<LavenderCurtainProps> = ({ onOpen }) => {
   }
 
   return (
-    <div className="fixed inset-0 z-[9999] bg-black">
+    <div className="fixed inset-0 z-[9999] bg-black" style={{ height: '100vh', width: '100vw' }}>
       {/* Área de interacción */}
       <div
         className="absolute inset-0 cursor-pointer"
+        style={{ height: '100%', width: '100%' }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onClick={handleClick}
       >
-        {/* Cortina Izquierda - Entrelazada naturalmente */}
+        {/* Cortina Izquierda - Expandida completamente */}
         <div
-          className="absolute top-0 left-0 w-3/5 h-full overflow-hidden"
+          className="absolute top-0 left-0 w-full h-full overflow-hidden"
           style={{
-            transform: `translateX(-${progress * 60}%)`,
+            transform: `translateX(-${progress * 50}%)`,
             transition: isDragging ? 'none' : 'transform 0.5s ease-out',
             zIndex: 2
           }}
@@ -86,23 +87,20 @@ const LavenderCurtain: React.FC<LavenderCurtainProps> = ({ onOpen }) => {
           <img 
             src="/images/FlowerLeft.png"
             alt="Lavender Left"
-            className="w-full h-full object-cover"
-            style={{
-              filter: 'hue-rotate(280deg) saturate(1.6) brightness(0.8) contrast(1.2)'
-            }}
+            className="w-full h-full object-cover opacity-90"
             draggable={false}
           />
-          <div className="absolute inset-0 bg-black/20"></div>
+          <div className="absolute inset-0 bg-black/10"></div>
           
           {/* Borde derecho suave para entrelazado */}
-          <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-purple-900/40 to-transparent"></div>
+          <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-black/30 to-transparent"></div>
         </div>
 
-        {/* Cortina Derecha - Entrelazada naturalmente */}
+        {/* Cortina Derecha - Expandida completamente */}
         <div
-          className="absolute top-0 right-0 w-3/5 h-full overflow-hidden"
+          className="absolute top-0 right-0 w-full h-full overflow-hidden"
           style={{
-            transform: `translateX(${progress * 60}%)`,
+            transform: `translateX(${progress * 50}%)`,
             transition: isDragging ? 'none' : 'transform 0.5s ease-out',
             zIndex: 1
           }}
@@ -110,17 +108,16 @@ const LavenderCurtain: React.FC<LavenderCurtainProps> = ({ onOpen }) => {
           <img 
             src="/images/FlowersRight.png"
             alt="Lavender Right"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-90"
             style={{
-              filter: 'hue-rotate(280deg) saturate(1.6) brightness(0.8) contrast(1.2)',
               transform: 'scaleX(-1)'
             }}
             draggable={false}
           />
-          <div className="absolute inset-0 bg-black/20"></div>
+          <div className="absolute inset-0 bg-black/10"></div>
           
           {/* Borde izquierdo suave para entrelazado */}
-          <div className="absolute top-0 left-0 w-8 h-full bg-gradient-to-r from-purple-900/40 to-transparent"></div>
+          <div className="absolute top-0 left-0 w-8 h-full bg-gradient-to-r from-black/30 to-transparent"></div>
         </div>
 
         {/* Contenido Central */}
@@ -131,15 +128,15 @@ const LavenderCurtain: React.FC<LavenderCurtainProps> = ({ onOpen }) => {
             zIndex: 10
           }}
         >
-          <h1 className="font-serif text-6xl md:text-8xl text-white mb-6 drop-shadow-2xl">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white mb-4 md:mb-6 drop-shadow-2xl">
             Hannah
           </h1>
-          <div className="flex items-center justify-center space-x-6 mb-6">
-            <div className="h-px bg-gradient-to-r from-transparent via-purple-300 to-transparent w-24"></div>
-            <span className="font-serif text-3xl md:text-4xl text-purple-200">XV Años</span>
-            <div className="h-px bg-gradient-to-r from-transparent via-purple-300 to-transparent w-24"></div>
+          <div className="flex items-center justify-center space-x-3 md:space-x-6 mb-4 md:mb-6">
+            <div className="h-px bg-gradient-to-r from-transparent via-purple-300 to-transparent w-12 md:w-24"></div>
+            <span className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl text-purple-200">XV Años</span>
+            <div className="h-px bg-gradient-to-r from-transparent via-purple-300 to-transparent w-12 md:w-24"></div>
           </div>
-          <p className="text-purple-300 text-2xl drop-shadow-lg">
+          <p className="text-purple-300 text-lg md:text-xl lg:text-2xl drop-shadow-lg px-4">
             Una celebración mágica te espera
           </p>
         </div>
@@ -153,8 +150,7 @@ const LavenderCurtain: React.FC<LavenderCurtainProps> = ({ onOpen }) => {
           }}
         >
           <div className="bg-white/95 backdrop-blur-sm rounded-full px-8 py-4 shadow-2xl border border-purple-300/50 mb-4">
-            <p className="text-purple-900 font-bold text-lg"> Desliza hacia arriba </p>
-            
+            <p className="text-purple-900 font-bold text-lg">Desliza hacia arriba</p>
           </div>
           
           <div className="flex justify-center">
